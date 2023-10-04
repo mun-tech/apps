@@ -1,0 +1,9 @@
+# Backup folder
+backup/
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# dotenv environment variables file
+.env
