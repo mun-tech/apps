@@ -52,6 +52,14 @@ const entries = [
 		github: "mithicher"
 	},
 	{
+		title: "Brick Breaker",
+		filename: `/public/games/brick-breaker`,
+		description: "Simple Game Brick Breaker.",
+		tag: 'game',
+		author: "_",
+		github: "_"
+	},
+	{
 		title: "Dancing Man",
 		filename: "/public/Metroxe/dancing_man.html",
 		description: "The first submission to the One HTML Page Challenge. It is a simple ASCII man starting the dance from Napoleon Dynamite.",
