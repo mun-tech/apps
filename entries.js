@@ -41,6 +41,13 @@ const entries = [
 		github: "TylerPottsDev"
 	},
 	{
+		title: "Tasksgram",
+		filename: `/public/tasksgram`,
+		description: "Simple Kanban Board.",
+		author: "Mithicher",
+		github: "mithicher"
+	},
+	{
 		title: "Dancing Man",
     filename: "/public/Metroxe/dancing_man.html",
 		description: "The first submission to the One HTML Page Challenge. It is a simple ASCII man starting the dance from Napoleon Dynamite.",
