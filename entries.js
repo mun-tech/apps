@@ -19,8 +19,16 @@ let Metroxe = "https://github.com/Metroxe/one-html-page-challenge/blob/master/en
 console.log({ baseUrl })
 const entries = [
 	{
+		title: "Task-Management",
+		filename: `/public/apps/AhlamKhalid/Task-Management/pages/dashboard.html`,
+		description: "Task Management.",
+		tag: 'app Task Management management',
+		author: "AhlamKhalid",
+		github: "#"
+	},	
+	{
 		title: "Kanban",
-		filename: `/public/kanban`,
+		filename: `/public/apps/dcode-youtube/kanban`,
 		description: "The first submission to the One HTML Page Challenge. It is a simple ASCII man starting the dance from Napoleon Dynamite.",
 		tag: 'app project management',
 		author: "Domenic (dcode)",
@@ -28,7 +36,7 @@ const entries = [
 	},
 	{
 		title: "Notes",
-		filename: `/public/notes`,
+		filename: `/public/apps/dcode-youtube/notes`,
 		description: "Simulation of an ant colony creating a never ending underground colony. The 'Q' represents a queen that can giver birth to ants 'A'. Food sources are represented by the numbers 9 - 1. (Currently only works in desktop Chrome)",
 		tag: 'app todo notes',
 		author: "Domenic (dcode)",
@@ -37,7 +45,7 @@ const entries = [
 	},
 	{
 		title: "Todo",
-		filename: `/public/todo`,
+		filename: `/public/apps/TylerPottsDev/todo`,
 		description: "An insult generator.",
 		tag: 'app todo notes',
 		author: "Tyler Potts",
@@ -45,12 +53,60 @@ const entries = [
 	},
 	{
 		title: "Tasksgram",
-		filename: `/public/tasksgram`,
+		filename: `/public/apps/mithicher/tasksgram`,
 		description: "Simple Kanban Board.",
 		tag: 'app project management',
 		author: "Mithicher",
 		github: "mithicher"
 	},
+	{
+		title: "Note keeper",
+		filename: `/public/apps/CodeWithSadee/Notekeeper`,
+		description: "Simple Note keeper.",
+		tag: 'app Note keeper management',
+		author: "Code With Sadee",
+		github: "#"
+	},	
+	{
+		title: "Dictionary",
+		filename: `/public/apps/CodingNepal/Dictionary`,
+		description: "Simple Dictionary.",
+		tag: 'app Dictionary',
+		author: "Coding Nepal",
+		github: "#"
+	},
+	{
+		title: "Todo",
+		filename: `/public/apps/CodingNepal/Todo`,
+		description: "Todo app.",
+		tag: 'app Todo note management',
+		author: "Coding Nepal",
+		github: "#"
+	},
+	{
+		title: "RandomQuote",
+		filename: `/public/apps/CodingNepal/RandomQuote`,
+		description: "Random Quote App.",
+		tag: 'app Random Quote',
+		author: "Coding Nepal",
+		github: "#"
+	},
+	{
+		title: "Weather",
+		filename: `/public/apps/CodingNepal/Weather`,
+		description: "Simple Weather.",
+		tag: 'app Weather',
+		author: "Coding Nepal",
+		github: "#"
+	},				
+	{
+		title: "Address Book",
+		filename: `/public/apps/GeekProbin/address-book`,
+		description: "Simple address book.",
+		tag: 'app Note keeper management',
+		author: "GeekProbin",
+		github: "#"
+	},	
 	{
 		title: "Brick Breaker",
 		filename: `/public/games/brick-breaker`,
