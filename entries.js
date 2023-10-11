@@ -25,7 +25,15 @@ const entries = [
 		tag: 'app Task Management management',
 		author: "AhlamKhalid",
 		github: "#"
-	},	
+	},
+	{
+		title: "Trello clone",
+		filename: `/public/apps/Alberto-Rivas/Trello-clone`,
+		description: "Trello clone with comment.",
+		tag: 'app Task Management trello clone',
+		author: "albertoarf13",
+		github: "albertoarf13"
+	},		
 	{
 		title: "Kanban",
 		filename: `/public/apps/dcode-youtube/kanban`,
@@ -51,6 +59,14 @@ const entries = [
 		author: "Tyler Potts",
 		github: "TylerPottsDev"
 	},
+	{
+		title: "Kards",
+		filename: `/public/apps/waterrmalann/Kards`,
+		description: "Kards | Trello Clone with board. <br/> I originally wanted to use a frontend framework but then decided against it as I wanted to see if I can do it without one, and well I did! <br/> But honestly 10/10 would not recommend. Using a framework is way better for something this complex.",
+		tag: 'app todo notes trello clone',
+		author: "waterrmalann",
+		github: "waterrmalann"
+	},	
 	{
 		title: "Tasksgram",
 		filename: `/public/apps/mithicher/tasksgram`,
@@ -106,7 +122,15 @@ const entries = [
 		tag: 'app Note keeper management',
 		author: "GeekProbin",
 		github: "#"
-	},	
+	},
+	{
+		title: "Trello manjula-dube",
+		filename: `/public/apps/manjula-dube/trello`,
+		description: "simple, basic, Trello clone vanillay js.",
+		tag: 'app trello todo notes management',
+		author: "manjula-dube",
+		github: "#"
+	},		
 	{
 		title: "Brick Breaker",
 		filename: `/public/games/brick-breaker`,

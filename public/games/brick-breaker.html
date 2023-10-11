@@ -145,7 +145,7 @@
      **/
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
-
+    console.log({ctx})
     const width = 710;
     const height = 880;
     const uiOffsetY = 80;
@@ -154,6 +154,7 @@
     canvas.height = height;
 
     function line(x1, y1, x2, y2, color = "#000") {
+      //console.log('line')
       ctx.beginPath();
       ctx.strokeStyle = color;
       ctx.lineWidth = 2;
@@ -163,6 +164,7 @@
     }
 
     function dashLine(x1, y1, x2, y2) {
+      //console.log('dashLine')
       ctx.beginPath();
       ctx.setLineDash([5, 15]);
       ctx.moveTo(x1, y1);
@@ -202,6 +204,35 @@
       ctx.restore();
     }
 
+    function nextLine(point, direct) {
+      let ballRadian = 16 + 9;
+      let nextPoint = new Vector(0,0)
+      let nextDirect = direct.get()
+      if (direct.x < 0 ) {
+        nextPoint.x = 0
+      } else if (direct.x > 0) {
+        nextPoint.x = 710
+      } 
+      nextPoint.y = point.y +  direct.y / direct.x * (nextPoint.x  - point.x)
+      if (nextPoint.y > 780 ) {
+        nextPoint.y = 780
+        nextPoint.x = point.x +  direct.x / direct.y * (nextPoint.y  - point.y)
+        nextDirect.mult(-1)
+      }
+      else if (nextPoint.y > 80 + ballRadian){
+        nextDirect.x *= -1
+      } else if (nextPoint.y < 80 + ballRadian){
+        nextPoint.y = 80 + ballRadian
+        nextPoint.x = point.x +  direct.x / direct.y * (nextPoint.y  - point.y)
+        nextDirect.y *= -1
+      } else {
+        nextPoint.y = 80 + ballRadian
+        nextDirect.mult(-1)
+      }
+
+      return {point: nextPoint, direct: nextDirect}
+    }
+
     function clear() {
       ctx.clearRect(0, 0, width, height);
     }
@@ -223,12 +254,79 @@
       constructor() { }
 
       display(state) {
+        //console.log({state})
         if (!state.ballMoving && !state.brickMoving && state.ballPos) {
-          dashLine(
+          //console.log('BallLine-display')
+
+          let shootDirect = []
+
+          let point =  []
+          point[0] = state.ballPos
+          point[1] = new Vector(0,0)
+          point[2] = new Vector(0,0)
+          point[3] = new Vector(0,0)
+          point[4] = new Vector(0,0)
+
+          shootDirect[0] = new Vector(
+            Mouse.position.x - state.ballPos.x,
+            Math.min(Mouse.position.y, 720) - state.ballPos.y
+          )
+
+          shootDirect[1] = new Vector(
+            -Mouse.position.x + state.ballPos.x, 
+            Math.min(Mouse.position.y, 720) - state.ballPos.y
+          )
+
+          try {
+            point[1]       = nextLine(point[0], shootDirect[0]).point
+            shootDirect[1] = nextLine(point[0], shootDirect[0]).direct
+
+            point[2]       = nextLine(point[1], shootDirect[1]).point
+            shootDirect[2] = nextLine(point[1], shootDirect[1]).direct
+
+            point[3]       = nextLine(point[2], shootDirect[2]).point
+            shootDirect[3] = nextLine(point[2], shootDirect[2]).direct
+
+            point[4]       = nextLine(point[3], shootDirect[3]).point
+            shootDirect[3] = nextLine(point[3], shootDirect[3]).direct
+          }
+          catch(err) {
+            
+          }
+
+          //console.log({point})
+          /*  dashLine(
             state.ballPos.x,
             state.ballPos.y,
-            Mouse.position.x,
+            point[0].x,
+            point[0].y,
+           Mouse.position.x,
             Math.min(Mouse.position.y, 720)
+          ); */
+
+          dashLine(
+            point[0].x,
+            point[0].y,
+            point[1].x,
+            point[1].y,
+          );
+          dashLine(
+            point[1].x,
+            point[1].y,
+            point[2].x,
+            point[2].y,
+          );
+          dashLine(
+            point[2].x,
+            point[2].y,
+            point[3].x,
+            point[3].y,
+          );
+          dashLine(
+            point[3].x,
+            point[3].y,
+            point[4].x,
+            point[4].y,
           );
         }
       }
@@ -280,6 +378,7 @@
       shoot(mousePos) {
         this.showDirection = false;
         const force = this.calcBallVelocity(this.angle(mousePos));
+        //console.log({force})
         this.applyForce(force);
       }
 
@@ -294,11 +393,12 @@
         const opposite = mousePos.y - this.position.y;
         const adjacent = mousePos.x - this.position.x;
         const angle = Math.atan2(opposite, adjacent);
-
+        //console.log({angle})
         return angle;
       }
 
       display() {
+        //console.log('display')
         circle(this.position.x, this.position.y, this.r, "#5ba7f4");
       }
 
@@ -802,7 +902,7 @@
         const bonusBallCount = this.bonusBalls.hitBallCount;
         const newBrickIndeces = shuffle(range(6)).slice(
           0,
-          Math.random() > 0.9 ? randomInt(5) : randomInt(4)
+          Math.random() > 0.8 ? randomInt(5) : randomInt(4)
         );
         const newBonusBallIndex = shuffle(
           range(6).filter((i) => !newBrickIndeces.includes(i))
@@ -847,6 +947,7 @@
       }
 
       run() {
+        //console.log('run')
         this.draw();
         this.checkCollision();
 
